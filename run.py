@@ -21,6 +21,9 @@ in case of higher difficulty
 """
 import random
 import os
+import curses
+import platform
+
 
 easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car'
               'fish', 'key', 'word', 'game']
