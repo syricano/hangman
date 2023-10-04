@@ -28,9 +28,9 @@ moderate_words = ["'apple", 'chair', 'earth', 'fruit', 'music', 'lemon', 'laptop
 difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calender', 'butterfly',
                    'chocolate', 'mobility', 'computer', 'calculator ',
                    'letter', 'improvement', 'document']
-attempts = [6]
+attempts = 6
 
-def get_difficulty_choice():
+def choose_word(difficulty):
     """ 
     Prompt the user to select a difficulty level "easy, moderate, difficult"
     The function will pick up a word from each list
@@ -41,13 +41,5 @@ def get_difficulty_choice():
         return random.choice(moderate_words)
     elif difficulty == 'Difficult':
         return random.choice(difficult_words)
-    
 
-    
-    
-   
-             
-        
-Difficulty_Choice = get_difficulty_choice()    
-print("Welcome to Hangman Game")
-print(f"Select Difficulty : {Chosen_Difficulty}")
+choose_word()
