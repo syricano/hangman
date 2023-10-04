@@ -73,4 +73,19 @@ def display_hangman(stdscr, incorrect_guesses):
     for i, line in enumerate(hangman):
         stdscr.addstr(i, 0, line)
 
+def display_word(stdscr, word, guessed_letters):
+    """ 
+    display the word with correctly guessed letters
+    """
+    display = ""
+    for letter in word:
+        if leeter in guessed_letters:
+            display += letter
+        else:
+            display += "_"
+    stdscr.addstr(7, 0, display)
+    
+
+    
+    
 
