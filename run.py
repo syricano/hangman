@@ -79,13 +79,13 @@ def display_word(stdscr, word, guessed_letters):
     """
     display = ""
     for letter in word:
-        if leeter in guessed_letters:
+        if letter in guessed_letters:
             display += letter
         else:
             display += "_"
     stdscr.addstr(7, 0, display)
     
-def select_difficulty(stdscr):
+def difficulty(stdscr):
     """ 
     function to set the difficulty as per user input
     """
@@ -116,16 +116,17 @@ def hangman_game(stscr):
     """ 
     Main game loop
     """
+    stdscr = curses.initscr()
     curses.curs_set(0)
-    select_difficulty = select_difficulty(stscr)
-    word_to_guess = choose_word(select_difficulty)
+    selected_difficulty = difficulty(stdscr)
+    word_to_guess = choose_word(selected_difficulty)
     guesses_letters = []
     incorrect_guesses = 0
     
     while True:
         stscr.clear()
-        stdscr.addstr(0, 0, "Difficulty: " + select_difficulty)
-        display_hangman(stdscr, word_to_guess, guesses_letters)
+        stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
+        display_hangman(stdscr, incorrect_guesses)
         
         if display_word(stdscr, word_to_guess, guesses_letters) == word_to_guess:
             stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
@@ -162,7 +163,7 @@ if __name__== "__main__":
     if platform.system() == 'windows':
         curses.wrapper(hangman_game)
     else:
-        hangman_game(None)            
+        curses.wrapper(hangman_game)          
             
             
         

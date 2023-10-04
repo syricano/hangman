@@ -1,1 +1,1 @@
-bugs: get_difficulty_choice creating function did not work, but I 
+bugs: 
