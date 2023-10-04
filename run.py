@@ -111,6 +111,56 @@ def selected_difficulty(stdscr):
         elif key == 10: # Enter key
             return difficulty_options[difficulty_index]        
 
+
+def hangman_game(stscr):
+    """ 
+    Main game loop
+    """
+    curses.curs_set(0)
+    selected_difficulty = selected_difficulty(stscr)
+    word_to_guess = choose_word(selected_difficulty)
+    guesses_letters = []
+    incorrect_guesses = 0
+    
+    while True:
+        stscr.clear()
+        stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
+        display_hangman(stdscr, word_to_guess, guesses_letters)
+        
+        if display_word(stdscr, word_to_guess, guesses_letters) == word_to_guess:
+            stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
+            stdscr.refresh()
+            stdscr.getch()
+            break
+        
+        guess = stdscr.getch()
+        
+        if not chr(guess).isalpha():
+            continue
+        
+        guess = chr(guess).lower
+        
+        if guess in guesses_letters:
+            continue
+        elif guess in word_to_guess:
+            guesses_letters.append(guess)
+        
+        else:
+            guesses_letters.append(guess)
+            incorrect_guesses +=1
+            
+        if incorrect_guesses >= attempts:
+            stdscr.clear()
+            display_hangman(stdscr, incorrect_guesses)
+            stdscr.addstr(9, 0, "You ran out of attempts.")
+            stdscr.refresh()
+            stdscr.getch()
+            break
+        
+         
+            
+            
+        
             
             
     
