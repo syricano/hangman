@@ -85,7 +85,34 @@ def display_word(stdscr, word, guessed_letters):
             display += "_"
     stdscr.addstr(7, 0, display)
     
+def selected_difficulty(stdscr):
+    """ 
+    function to set the difficulty as per user input
+    """
+    stdscr.clear() # clear terminal screen
+    stdscr.addstr(0, 0, "Welcome to Hangman Game !")
+    stdscr.addstr(2, 0, "Choose a difficulty level:")
+    difficulty_options = ["easy", "moderate", "difficult"]
+    difficulty_index = 0
+    
+    while True:
+        for i, option in enumerate(difficulty_options):
+            if i == difficulty_index:
+                stdscr.addstr(i + 4, 2, "->" + option)
+            else:
+                stdscr.addstr(i + 4, 2 , "  " + option)
+                
+        key = stdscr.getch()
+        
+        if key == curses.KEY_DOWN:
+            difficulty_index = (difficulty_index + 1 ) % len(difficulty_options)
+        elif key == curses.KEY_UP:
+            difficulty_index = (difficulty_index - 1) % len(difficulty_options)
+        elif key == 10: # Enter key
+            return difficulty_options[difficulty_index]        
 
+            
+            
     
     
 
