@@ -20,6 +20,7 @@ in case of higher difficulty
  
 """
 import random
+import os
 
 easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car'
               'fish', 'key', 'word', 'game']
@@ -29,6 +30,17 @@ difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calender', 
                    'chocolate', 'mobility', 'computer', 'calculator ',
                    'letter', 'improvement', 'document']
 attempts = 6
+
+def clear_screen():
+    """ 
+    clear the terminal screen
+    """
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+        
+        
 
 def choose_word(difficulty):
     """ 
