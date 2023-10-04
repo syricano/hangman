@@ -57,4 +57,20 @@ def choose_word(difficulty):
     elif difficulty == 'Difficult':
         return random.choice(difficult_words)
 
-choose_word()
+def display_hangman(stdscr, incorrect_guesses):
+    """ 
+    display the hangman drawing as per incorrect guesses
+    """
+    hangman = [
+    "   ----   ",
+    " |       |   ",
+    " |       " + ("0" if incorrect_guesses > 0 else ""),
+    " |      " + ("/" if incorrect_guesses > 2 else "") + ("|" if incorrect_guesses > 1 else "") + ("\\" if incorrect_guesses > 3 else ""),
+    " |     " + ("/" if incorrect_guesses > 4 else "") + ("\\" if incorrect_guesses > 5 else ""),
+    " |       ",
+    "=========="
+    ]
+    for i, line in enumerate(hangman):
+        stdscr.addstr(i, 0, line)
+
+
