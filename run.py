@@ -25,11 +25,11 @@ import curses
 import platform
 
 
-easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car'
+easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car',
               'fish', 'key', 'word', 'game']
-moderate_words = ["'apple", 'chair', 'earth', 'fruit', 'music', 'lemon', 'laptop',
+moderate_words = ['apple', 'chair', 'earth', 'fruit', 'music', 'lemon', 'laptop',
                   'orange', 'summer', 'winter', 'window']
-difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calender', 'butterfly',
+difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calendar', 'butterfly',
                    'chocolate', 'mobility', 'computer', 'calculator ',
                    'letter', 'improvement', 'document']
 attempts = 6
@@ -50,11 +50,11 @@ def choose_word(difficulty):
     Prompt the user to select a difficulty level "easy, moderate, difficult"
     The function will pick up a word from each list
     """
-    if difficulty == 'Easy':
+    if difficulty == 'easy':
         return random.choice(easy_words)
-    elif difficulty == 'Moderate':
+    elif difficulty == 'moderate':
         return random.choice(moderate_words)
-    elif difficulty == 'Difficult':
+    elif difficulty == 'difficult':
         return random.choice(difficult_words)
 
 def display_hangman(stdscr, incorrect_guesses):
@@ -85,7 +85,7 @@ def display_word(stdscr, word, guessed_letters):
             display += "_"
     stdscr.addstr(7, 0, display)
     
-def selected_difficulty(stdscr):
+def select_difficulty(stdscr):
     """ 
     function to set the difficulty as per user input
     """
@@ -117,14 +117,14 @@ def hangman_game(stscr):
     Main game loop
     """
     curses.curs_set(0)
-    selected_difficulty = selected_difficulty(stscr)
-    word_to_guess = choose_word(selected_difficulty)
+    select_difficulty = select_difficulty(stscr)
+    word_to_guess = choose_word(select_difficulty)
     guesses_letters = []
     incorrect_guesses = 0
     
     while True:
         stscr.clear()
-        stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
+        stdscr.addstr(0, 0, "Difficulty: " + select_difficulty)
         display_hangman(stdscr, word_to_guess, guesses_letters)
         
         if display_word(stdscr, word_to_guess, guesses_letters) == word_to_guess:
@@ -157,7 +157,12 @@ def hangman_game(stscr):
             stdscr.getch()
             break
         
-         
+# Calling the main game in corresponding with operating system
+if __name__== "__main__":
+    if platform.system() == 'windows':
+        curses.wrapper(hangman_game)
+    else:
+        hangman_game(None)            
             
             
         
