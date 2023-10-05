@@ -33,16 +33,7 @@ difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calendar', 
                    'chocolate', 'mobility', 'computer', 'calculator ',
                    'letter', 'improvement', 'document'] # lists of words for difficult game
 attempts = 6 # numbers for allowed tempts 
-
-def clear_screen():
-    """ 
-    clear the terminal screen
-    """
-    if platform.system() == 'Windows':
-        os.system('cls')
-    else:
-        os.system('clear')
-        
+  
         
 
 def choose_word(difficulty):
@@ -109,7 +100,10 @@ def difficulty(stdscr):
         elif key == curses.KEY_UP:
             difficulty_index = (difficulty_index - 1) % len(difficulty_options)
         elif key == 10: # Enter key
-            return difficulty_options[difficulty_index]        
+            return difficulty_options[difficulty_index] 
+        
+        
+       
 
 def play_hangman_game(stdscr):
     """ 
@@ -120,7 +114,7 @@ def play_hangman_game(stdscr):
         calling functions , lists and variables"""
         incorrect_letters = []
         curses.curs_set(0)
-        stdscr.clear() # clear terminal screen
+        #stdscr.clear() # clear terminal screen
         selected_difficulty = difficulty(stdscr)
         word_to_guess = choose_word(selected_difficulty)
         guesses_letters = []
@@ -157,13 +151,13 @@ def play_hangman_game(stdscr):
             else:
                 guesses_letters.append(guess)
                 if guess not in word_to_guess:
-                    incorrect_letters.append(guess) #append to incorrect letters list
+                    incorrect_letters.append(guess) 
                     incorrect_guesses += 1  
                     
                 
                 
             if incorrect_guesses >= attempts:
-                stdscr.clear()
+                #stdscr.clear()
                 display_hangman(stdscr, incorrect_guesses)
                 stdscr.addstr(9, 0, "You ran out of attempts.") #ending the game
                 stdscr.addstr(10, 0, "The word was : " + word_to_guess) #reveling the word
