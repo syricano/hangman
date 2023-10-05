@@ -1,3 +1,10 @@
+#_Hangman_
+
+# Introduction
+
+[Hangman](https://github.com/syricano/hangman) is a website for the classical hangman game that can be played online. It can be played [here]##to be added after deployed 
+
+
 - bugs: conflict between function name selection_difficulty and varible selcted_difficulty
 
 resolved by rename the function
