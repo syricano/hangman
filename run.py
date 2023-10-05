@@ -141,7 +141,6 @@ def play_hangman_game(stdscr):
         except curses.error:
             pass
         
-        #stdscr.clear() # clear terminal screen
         selected_difficulty = difficulty(stdscr)
         word_to_guess = choose_word(selected_difficulty)
         guesses_letters = []
@@ -190,7 +189,6 @@ def play_hangman_game(stdscr):
                 
                 
             if incorrect_guesses >= attempts:
-                #stdscr.clear()
                 display_hangman(stdscr, incorrect_guesses)
                 stdscr.addstr(14, 0, "You ran out of attempts.") #ending the game
                 stdscr.addstr(15, 0, "The word was : " + word_to_guess) #reveling the word
@@ -210,15 +208,7 @@ def main(stdscr):
     """ 
     calling game function 
     """
-    while True:
-        """ 
-        play_hangman_game(stdscr)
-        stdscr.addstr(18, 0, "Thanks for playing Hangman !")
-        stdscr.refresh()
-        key = stdscr.getch()
-        if key == ord('Q') or key == ord('q'):
-            break
-        """
+    while True:      
         stdscr.addstr(0, 0, "Welcome to Hangman Game!")
         stdscr.addstr(2, 0, "Select an option:")
         options = ["Play Game", "Rules", "Quit"]
