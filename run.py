@@ -61,13 +61,14 @@ def display_hangman(stdscr, incorrect_guesses):
     """ 
     display the hangman drawing as per incorrect guesses
     """
+    stdscr.clear() # clear terminal screen
     hangman = [
-    "  ---- ",
-    " |      |   ",
-    " |      " + ("0" if incorrect_guesses > 0 else ""),
-    " |     " + ("/" if incorrect_guesses > 2 else "") + ("|" if incorrect_guesses > 1 else "") + ("\\" if incorrect_guesses > 3 else ""),
-    " |    " + ("/" if incorrect_guesses > 4 else "") + ("\\" if incorrect_guesses > 5 else ""),
-    " |      ",
+        "   ----   ",
+    " |       |   ",
+    " |       " + ("0" if incorrect_guesses > 0 else ""),
+    " |      " + ("/" if incorrect_guesses > 2 else "") + ("|" if incorrect_guesses > 1 else "") + ("\\" if incorrect_guesses > 3 else ""),
+    " |     " + ("/" if incorrect_guesses > 4 else "") + ("\\" if incorrect_guesses > 5 else ""),
+    " |       ",
     "=========="
     ]
     for i, line in enumerate(hangman):
@@ -109,67 +110,87 @@ def difficulty(stdscr):
         elif key == 10: # Enter key
             return difficulty_options[difficulty_index]        
 
-
-def hangman_game(stscr):
+def play_hangman_game(stdscr):
     """ 
-    Main game loop
+    main game body with play again option
     """
-    incorrect_letters = []
-    stdscr = curses.initscr()
-    curses.curs_set(0)
-    selected_difficulty = difficulty(stdscr)
-    word_to_guess = choose_word(selected_difficulty)
-    guesses_letters = []
-    incorrect_guesses = 0
-    
     while True:
-        stscr.clear()
-        stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
-        stdscr.addstr(9, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
-        display_hangman(stdscr, incorrect_guesses)
+        incorrect_letters = []
+        curses.curs_set(0)
+        stdscr.clear() # clear terminal screen
+        selected_difficulty = difficulty(stdscr)
+        word_to_guess = choose_word(selected_difficulty)
+        guesses_letters = []
+        incorrect_guesses = 0
         
-        guessed_word = ['_' for _ in word_to_guess]
-        
-        if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess):
-            stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
-            stdscr.refresh()
-            stdscr.getch()
-            break
-        
-        guess = stdscr.getch()
-        
-        if not chr(guess).isalpha():
-            continue
-        
-        guess = chr(guess).lower()
-        
-        if guess in guesses_letters:
-            continue
-        elif guess in word_to_guess:
-            guesses_letters.append(guess)
-        
-        else:
-            guesses_letters.append(guess)
-            if guess not in word_to_guess:
-              incorrect_letters.append(guess)
-              incorrect_guesses += 1  
-                
+        while True:
             
-            
-        if incorrect_guesses >= attempts:
-            stdscr.clear()
+            stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
+            stdscr.addstr(9, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
             display_hangman(stdscr, incorrect_guesses)
-            stdscr.addstr(9, 0, "You ran out of attempts.")
-            stdscr.refresh()
-            stdscr.getch()
+                    
+            if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess):
+                stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
+                stdscr.addstr(10, 0, "Press 'Y' to play again or 'Q to quite")
+                stdscr.refresh()
+                key = stdscr.getch()
+                if key == ord('Y') or key == ord('y'):
+                    break
+                else:
+                    return
+            
+            guess = stdscr.getch()
+            
+            if not chr(guess).isalpha():
+                continue
+            
+            guess = chr(guess).lower()
+            
+            if guess in guesses_letters:
+                continue
+            elif guess in word_to_guess:
+                guesses_letters.append(guess)
+            
+            else:
+                guesses_letters.append(guess)
+                if guess not in word_to_guess:
+                    incorrect_letters.append(guess)
+                    incorrect_guesses += 1  
+                    
+                
+                
+            if incorrect_guesses >= attempts:
+                stdscr.clear()
+                display_hangman(stdscr, incorrect_guesses)
+                stdscr.addstr(9, 0, "You ran out of attempts.")
+                stdscr.addstr(10, 0, "The word was : " + word_to_guess)
+                stdscr.addstr(11, 0, "Press 'Y' to Play again or 'Q' to quite.")
+                stdscr.refresh()
+                stdscr.getch()
+                key = stdscr.getch()
+                if key == ord('Y') or key == ord('y'):
+                    break
+                else:
+                    return
+def main(stdscr):
+    """ 
+    calling game function 
+    """
+    while True:
+        play_hangman_game(stdscr)
+        stdscr.addstr(12, 0, "Thanks for playing Hangman !")
+        stdscr.refresh()
+        key = stdscr.getch()
+        if key == ord('Q') or key == ord('q'):
             break
+        
         
 # Calling the main game in corresponding with operating system
 if __name__== "__main__":
     if platform.system() == 'windows':
-        curses.wrapper(hangman_game)
+        curses.wrapper(main)
     else:
-        curses.wrapper(hangman_game)          
+        curses.wrapper(main)          
             
             
         
