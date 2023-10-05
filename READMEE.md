@@ -6,3 +6,7 @@ it was resolved by adding ()
 
 - a bug found that nothing print when the word is guessed
 it was resolved by assigning variable to guessed word and comparing it with word to guess (secret word)
+
+- a bug found in rules, it did not quite when selecting q, 
+
+resolved adding the forgotten parentheses 
