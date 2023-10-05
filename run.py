@@ -153,13 +153,17 @@ def play_hangman_game(stdscr):
             if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess): # to check if user entered letters correctly comparing it with original one from difficulty list
                 stdscr.clear()
                 stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
-                stdscr.addstr(10, 0, "Press 'Y or Enter' to play again or 'Q to quite")
+                stdscr.addstr(10, 0, "Press 'Y or Enter' to play again or 'Q' to quite")
                 stdscr.refresh()
                 key = stdscr.getch()
                 if key == ord('Y') or key == ord('y') or key == 10:
                     play_hangman_game(stdscr)
+                elif key == ord('Q') or key == ord('q'):
+                    exit(0)
                 else:
-                    return
+                    stdscr.clear()
+                    main(stdscr)
+                    
             
             guess = stdscr.getch()
             
@@ -186,14 +190,18 @@ def play_hangman_game(stdscr):
                 display_hangman(stdscr, incorrect_guesses)
                 stdscr.addstr(14, 0, "You ran out of attempts.") #ending the game
                 stdscr.addstr(15, 0, "The word was : " + word_to_guess) #reveling the word
-                stdscr.addstr(17, 0, "Press 'Y' to Play again or 'Q' to quite.")
+                stdscr.addstr(17, 0, "Press 'Y or Enter' to Play again or 'Q' to quite.")
                 stdscr.refresh()
                 stdscr.getch()
                 key = stdscr.getch()
-                if key == ord('Y') or key == ord('y'):
-                    break
+                if key == ord('Y') or key == ord('y') or key ==10:
+                    stdscr.clear()
+                    play_hangman_game(stdscr)
+                elif key == ord('Q') or key == ord('q'):
+                    exit(0)
                 else:
-                    return
+                    stdscr.clear()
+                    main(stdscr)
 def main(stdscr):
     """ 
     calling game function 
