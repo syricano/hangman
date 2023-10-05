@@ -139,7 +139,7 @@ def hangman_game(stscr):
         if not chr(guess).isalpha():
             continue
         
-        guess = chr(guess).lower
+        guess = chr(guess).lower()
         
         if guess in guesses_letters:
             continue
