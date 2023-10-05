@@ -151,12 +151,13 @@ def play_hangman_game(stdscr):
             display_hangman(stdscr, incorrect_guesses)
                     
             if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess): # to check if user entered letters correctly comparing it with original one from difficulty list
+                stdscr.clear()
                 stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
-                stdscr.addstr(10, 0, "Press 'Y' to play again or 'Q to quite")
+                stdscr.addstr(10, 0, "Press 'Y or Enter' to play again or 'Q to quite")
                 stdscr.refresh()
                 key = stdscr.getch()
-                if key == ord('Y') or key == ord('y'):
-                    break
+                if key == ord('Y') or key == ord('y') or key == 10:
+                    play_hangman_game(stdscr)
                 else:
                     return
             
