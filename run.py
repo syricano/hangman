@@ -72,6 +72,7 @@ def display_hangman(stdscr, incorrect_guesses):
     ]
     for i, line in enumerate(hangman):
         stdscr.addstr(i, 0, line)
+        
 
 def display_word(stdscr, word, guessed_letters):
     """ 
@@ -113,6 +114,7 @@ def hangman_game(stscr):
     """ 
     Main game loop
     """
+    incorrect_letters = []
     stdscr = curses.initscr()
     curses.curs_set(0)
     selected_difficulty = difficulty(stdscr)
@@ -123,6 +125,7 @@ def hangman_game(stscr):
     while True:
         stscr.clear()
         stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
+        stdscr.addstr(9, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
         display_hangman(stdscr, incorrect_guesses)
         
         guessed_word = ['_' for _ in word_to_guess]
@@ -147,7 +150,11 @@ def hangman_game(stscr):
         
         else:
             guesses_letters.append(guess)
-            incorrect_guesses +=1
+            if guess not in word_to_guess:
+              incorrect_letters.append(guess)
+              incorrect_guesses += 1  
+                
+            
             
         if incorrect_guesses >= attempts:
             stdscr.clear()
