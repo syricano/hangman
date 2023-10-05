@@ -121,8 +121,11 @@ def display_rules(stdscr):
     stdscr.refresh()
     while True:
         key = stdscr.getch()
-        if key == ord('Q' or key == ord('q')):
-            break
+        if key == ord('Q') or key == ord('q'):            
+            stdscr.clear()
+            main(stdscr)
+        elif key == 10:
+            play_hangman_game(stdscr)
                     
 
 def play_hangman_game(stdscr):
