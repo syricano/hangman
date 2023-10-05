@@ -195,13 +195,41 @@ def main(stdscr):
     calling game function 
     """
     while True:
+        """ 
         play_hangman_game(stdscr)
         stdscr.addstr(18, 0, "Thanks for playing Hangman !")
         stdscr.refresh()
         key = stdscr.getch()
         if key == ord('Q') or key == ord('q'):
             break
+        """
+        stdscr.addstr(0, 0, "Welcome to Hangman Game!")
+        stdscr.addstr(2, 0, "Select an option:")
+        options = ["Play Game", "Rules", "Quit"]
+        option_index = 0
         
+        while True: # Iterating the options and highlighting the selected one with -> before it
+            
+            for i, option in enumerate(options):
+                if i == option_index:
+                    stdscr.addstr(i + 4, 2, "->" + option)
+                else:
+                    stdscr.addstr(i + 4, 2, "  " + option)
+                    
+            key = stdscr.getch() # Method to control keyboard arrow keys up & down
+            
+            if key == curses.KEY_DOWN:
+                option_index = (option_index + 1) % len(option)
+            elif key == curses.KEY_UP:
+                option_index = (option_index -1) % len(options)
+            elif key == 10: # Enter key
+                if options[option_index] == "Play Game":
+                    play_hangman_game(stdscr)
+                elif options[option_index] == "Rules":
+                    display_rules(stdscr)
+                elif options[option_index] == "Quit":
+                    return
+                
         
 # Calling the main game in corresponding with operating system
 if __name__== "__main__":
