@@ -20,7 +20,7 @@ in case of higher difficulty
  
 """
 import random
-import os
+import os 
 import curses
 import platform
 
@@ -101,7 +101,29 @@ def difficulty(stdscr):
             return difficulty_options[difficulty_index] 
         
         
-       
+def display_rules(stdscr):
+    """ 
+    Display te game rules
+    """
+    rules = [
+        "1. Choose a difficulty level: easy, moderate, or difficult.",
+        "2. Guess letters to complete the hidden word.",
+        "3. You have a limited number of attempts (6) to guess the word.",
+        "4. If you guess a letter incorrectly, part of the hangman will be drawn.",
+        "5. If you complete the word before running out of attempts, you win!",
+        "6. If the hangman is fully drawn, you lose the game.",
+        "7. You can play again or quit after each game."
+    ]
+    for i, rule in enumerate(rules):
+        stdscr.addstr(i + 2, 0, rule)
+        
+    stdscr.addstr(10, 0, "Press 'Q' to go back to the main menu.")
+    stdscr.refresh()
+    while True:
+        key = stdscr.getch()
+        if key == ord('Q' or key == ord('q')):
+            break
+                    
 
 def play_hangman_game(stdscr):
     """ 
