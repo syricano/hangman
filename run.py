@@ -75,15 +75,12 @@ def display_hangman(stdscr, incorrect_guesses):
 
 def display_word(stdscr, word, guessed_letters):
     """ 
-    display the word with correctly guessed letters
+        Update the guessed_word based on correctly guessed letters and return it.
     """
-    display = ""
-    for letter in word:
-        if letter in guessed_letters:
-            display += letter
-        else:
-            display += "_"
-    stdscr.addstr(7, 0, display)
+    guessed_word = ['_' if letter not in guessed_letters else letter for letter in word]
+    stdscr.addstr(7, 0, ' '.join(guessed_word))
+    return guessed_word
+    
     
 def difficulty(stdscr):
     """ 
@@ -128,7 +125,9 @@ def hangman_game(stscr):
         stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
         display_hangman(stdscr, incorrect_guesses)
         
-        if display_word(stdscr, word_to_guess, guesses_letters) == word_to_guess:
+        guessed_word = ['_' for _ in word_to_guess]
+        
+        if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess):
             stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
             stdscr.refresh()
             stdscr.getch()
