@@ -34,7 +34,22 @@ difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calendar', 
                    'letter', 'improvement', 'document'] # lists of words for difficult game
 attempts = 6 # numbers for allowed tempts 
   
-        
+def display_hangman(stdscr, incorrect_guesses):
+    """ 
+    display the hangman drawing as per incorrect guesses
+    """
+    hangman = [
+        "   ----   ",
+    " |       |   ",
+    " |       " + ("0" if incorrect_guesses > 0 else ""),
+    " |      " + ("/" if incorrect_guesses > 2 else "") + ("|" if incorrect_guesses > 1 else "") + ("\\" if incorrect_guesses > 3 else ""),
+    " |     " + ("/" if incorrect_guesses > 4 else "") + ("\\" if incorrect_guesses > 5 else ""),
+    " |       ",
+    "=========="
+    ]
+    for i, line in enumerate(hangman):
+        stdscr.addstr(i, 0, line)        
+
 
 def choose_word(difficulty):
     """ 
@@ -47,24 +62,6 @@ def choose_word(difficulty):
         return random.choice(moderate_words)
     elif difficulty == 'difficult':
         return random.choice(difficult_words)
-
-def display_hangman(stdscr, incorrect_guesses):
-    """ 
-    display the hangman drawing as per incorrect guesses
-    """
-    stdscr.clear() # clear terminal screen
-    hangman = [
-        "   ----   ",
-    " |       |   ",
-    " |       " + ("0" if incorrect_guesses > 0 else ""),
-    " |      " + ("/" if incorrect_guesses > 2 else "") + ("|" if incorrect_guesses > 1 else "") + ("\\" if incorrect_guesses > 3 else ""),
-    " |     " + ("/" if incorrect_guesses > 4 else "") + ("\\" if incorrect_guesses > 5 else ""),
-    " |       ",
-    "=========="
-    ]
-    for i, line in enumerate(hangman):
-        stdscr.addstr(i, 0, line)
-        
 
 def display_word(stdscr, word, guessed_letters):
     """ 
@@ -123,6 +120,7 @@ def play_hangman_game(stdscr):
         while True:
             
             stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
+            stdscr.clear() # clear terminal screen
             stdscr.addstr(9, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
             display_hangman(stdscr, incorrect_guesses)
                     
