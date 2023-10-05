@@ -25,14 +25,14 @@ import curses
 import platform
 
 
-easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car',
-              'fish', 'key', 'word', 'game']
+easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car', 
+              'fish', 'key', 'word', 'game'] # lists of words for easy game
 moderate_words = ['apple', 'chair', 'earth', 'fruit', 'music', 'lemon', 'laptop',
-                  'orange', 'summer', 'winter', 'window']
+                  'orange', 'summer', 'winter', 'window'] # lists of words for moderate game
 difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calendar', 'butterfly',
                    'chocolate', 'mobility', 'computer', 'calculator ',
-                   'letter', 'improvement', 'document']
-attempts = 6
+                   'letter', 'improvement', 'document'] # lists of words for difficult game
+attempts = 6 # numbers for allowed tempts 
 
 def clear_screen():
     """ 
@@ -89,19 +89,20 @@ def difficulty(stdscr):
     function to set the difficulty as per user input
     """
     stdscr.clear() # clear terminal screen
+    # Stdscr is the curser window object to control users input and options
     stdscr.addstr(0, 0, "Welcome to Hangman Game !")
     stdscr.addstr(2, 0, "Choose a difficulty level:")
     difficulty_options = ["easy", "moderate", "difficult"]
     difficulty_index = 0
     
-    while True:
+    while True: #iterating the difficulty lists and highlighting the selected one with -> before it 
         for i, option in enumerate(difficulty_options):
             if i == difficulty_index:
                 stdscr.addstr(i + 4, 2, "->" + option)
             else:
                 stdscr.addstr(i + 4, 2 , "  " + option)
                 
-        key = stdscr.getch()
+        key = stdscr.getch() # method to control keyboard arrow keys up & down
         
         if key == curses.KEY_DOWN:
             difficulty_index = (difficulty_index + 1 ) % len(difficulty_options)
@@ -115,6 +116,8 @@ def play_hangman_game(stdscr):
     main game body with play again option
     """
     while True:
+        """ 
+        calling functions , lists and variables"""
         incorrect_letters = []
         curses.curs_set(0)
         stdscr.clear() # clear terminal screen
@@ -129,7 +132,7 @@ def play_hangman_game(stdscr):
             stdscr.addstr(9, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
             display_hangman(stdscr, incorrect_guesses)
                     
-            if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess):
+            if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess): # to check if user entered letters correctly comparing it with original one from difficulty list
                 stdscr.addstr(9, 0, "Congratulations! You guessed the word: " + word_to_guess)
                 stdscr.addstr(10, 0, "Press 'Y' to play again or 'Q to quite")
                 stdscr.refresh()
@@ -141,7 +144,7 @@ def play_hangman_game(stdscr):
             
             guess = stdscr.getch()
             
-            if not chr(guess).isalpha():
+            if not chr(guess).isalpha(): #validating users input to check if it's alphabetical and converts it to lowercase >below method
                 continue
             
             guess = chr(guess).lower()
@@ -149,12 +152,12 @@ def play_hangman_game(stdscr):
             if guess in guesses_letters:
                 continue
             elif guess in word_to_guess:
-                guesses_letters.append(guess)
+                guesses_letters.append(guess) # append to guessed letters
             
             else:
                 guesses_letters.append(guess)
                 if guess not in word_to_guess:
-                    incorrect_letters.append(guess)
+                    incorrect_letters.append(guess) #append to incorrect letters list
                     incorrect_guesses += 1  
                     
                 
@@ -162,8 +165,8 @@ def play_hangman_game(stdscr):
             if incorrect_guesses >= attempts:
                 stdscr.clear()
                 display_hangman(stdscr, incorrect_guesses)
-                stdscr.addstr(9, 0, "You ran out of attempts.")
-                stdscr.addstr(10, 0, "The word was : " + word_to_guess)
+                stdscr.addstr(9, 0, "You ran out of attempts.") #ending the game
+                stdscr.addstr(10, 0, "The word was : " + word_to_guess) #reveling the word
                 stdscr.addstr(11, 0, "Press 'Y' to Play again or 'Q' to quite.")
                 stdscr.refresh()
                 stdscr.getch()
