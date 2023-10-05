@@ -38,6 +38,7 @@ def display_hangman(stdscr, incorrect_guesses):
     """ 
     display the hangman drawing as per incorrect guesses
     """
+    stdscr.addstr(8, 0, "Make a letter guess and save your man!")
     hangman = [
         "   ----   ",
     " |       |   ",
@@ -68,7 +69,7 @@ def display_word(stdscr, word, guessed_letters):
         Update the guessed_word based on correctly guessed letters and return it.
     """
     guessed_word = ['_' if letter not in guessed_letters else letter for letter in word]
-    stdscr.addstr(7, 0, ' '.join(guessed_word))
+    stdscr.addstr(10, 0, ' '.join(guessed_word))
     return guessed_word
     
     
@@ -79,7 +80,7 @@ def difficulty(stdscr):
     stdscr.clear() # clear terminal screen
     # Stdscr is the curser window object to control users input and options
     stdscr.addstr(0, 0, "Welcome to Hangman Game !")
-    stdscr.addstr(2, 0, "Choose a difficulty level:")
+    stdscr.addstr(3, 0, "Choose a difficulty level:")
     difficulty_options = ["easy", "moderate", "difficult"]
     difficulty_index = 0
     
@@ -121,7 +122,7 @@ def play_hangman_game(stdscr):
             
             stdscr.addstr(0, 0, "Difficulty: " + selected_difficulty)
             stdscr.clear() # clear terminal screen
-            stdscr.addstr(9, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
+            stdscr.addstr(12, 0, "Incorrect letters: " + ', '.join(incorrect_letters)) # display incorrect letters
             display_hangman(stdscr, incorrect_guesses)
                     
             if display_word(stdscr, word_to_guess, guesses_letters) == list(word_to_guess): # to check if user entered letters correctly comparing it with original one from difficulty list
@@ -157,9 +158,9 @@ def play_hangman_game(stdscr):
             if incorrect_guesses >= attempts:
                 #stdscr.clear()
                 display_hangman(stdscr, incorrect_guesses)
-                stdscr.addstr(9, 0, "You ran out of attempts.") #ending the game
-                stdscr.addstr(10, 0, "The word was : " + word_to_guess) #reveling the word
-                stdscr.addstr(11, 0, "Press 'Y' to Play again or 'Q' to quite.")
+                stdscr.addstr(14, 0, "You ran out of attempts.") #ending the game
+                stdscr.addstr(15, 0, "The word was : " + word_to_guess) #reveling the word
+                stdscr.addstr(17, 0, "Press 'Y' to Play again or 'Q' to quite.")
                 stdscr.refresh()
                 stdscr.getch()
                 key = stdscr.getch()
@@ -173,7 +174,7 @@ def main(stdscr):
     """
     while True:
         play_hangman_game(stdscr)
-        stdscr.addstr(12, 0, "Thanks for playing Hangman !")
+        stdscr.addstr(18, 0, "Thanks for playing Hangman !")
         stdscr.refresh()
         key = stdscr.getch()
         if key == ord('Q') or key == ord('q'):
