@@ -173,6 +173,10 @@ def play_hangman_game(stdscr):
                 if key == ord('Y') or key == ord('y') or key == 10:
                     play_hangman_game(stdscr)
                 elif key == ord('Q') or key == ord('q'):
+                    stdscr.clear()
+                    stdscr.addstr(0, 0, "Thank you for playing Hangman! Goodbye!")
+                    stdscr.refresh()
+                    curses.napms(3000)  # Display "Thanks" message for 3 seconds
                     exit(0)
                 else:
                     stdscr.clear()
@@ -211,6 +215,10 @@ def play_hangman_game(stdscr):
                     stdscr.clear()
                     play_hangman_game(stdscr)
                 elif key == ord('Q') or key == ord('q'):
+                    stdscr.clear()
+                    stdscr.addstr(0, 0, "Thank you for playing Hangman! Goodbye!")
+                    stdscr.refresh()
+                    curses.napms(3000)  # Display "Thanks" message for 3 seconds                    
                     exit(0)
                 else:
                     stdscr.clear()
@@ -245,7 +253,11 @@ def main(stdscr):
                 elif options[option_index] == "Rules":
                     display_rules(stdscr)
                 elif options[option_index] == "Quit":
-                    return
+                    stdscr.clear()
+                    stdscr.addstr(0, 0, "Thank you for playing Hangman! Goodbye!")
+                    stdscr.refresh()
+                    curses.napms(3000)  # Display "Thanks" message for 3 seconds
+                    exit(0)
                 
         
 # Calling the main game in corresponding with operating system
