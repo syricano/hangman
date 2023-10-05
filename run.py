@@ -136,7 +136,11 @@ def play_hangman_game(stdscr):
         """ 
         calling functions , lists and variables"""
         incorrect_letters = []
-        curses.curs_set(0)
+        try :
+            curses.curs_set(0)
+        except curses.error:
+            pass
+        
         #stdscr.clear() # clear terminal screen
         selected_difficulty = difficulty(stdscr)
         word_to_guess = choose_word(selected_difficulty)
