@@ -25,13 +25,24 @@ import curses
 import platform
 
 
-easy_words = ['sun','cat', 'rat' ,'road', 'dog', 'rain', 'book', 'box', 'hat', 'car', 
-              'fish', 'key', 'word', 'game'] # lists of words for easy game
-moderate_words = ['apple', 'chair', 'earth', 'fruit', 'music', 'lemon', 'laptop',
-                  'orange', 'summer', 'winter', 'window'] # lists of words for moderate game
-difficult_words = ['telephone', 'education', 'welcome', 'hospital', 'calendar', 'butterfly',
-                   'chocolate', 'mobility', 'computer', 'calculator ',
-                   'letter', 'improvement', 'document'] # lists of words for difficult game
+easy_words = ["code", "list", "word", "four", "tree", "bird", "pink", "frog", "jump", "leap",
+    "rain", "book", "dark", "play", "time", "zone", "port", "gold", "star", "drop",
+    "fish", "moon", "high", "open", "close", "love", "hate", "song", "race", "fast",
+    "slow", "tall", "wall", "chip", "blue", "gray", "bark", "spin", "lamp", "heat", "bell",
+    "well", "gold", "cold", "hand", "hope", "bold", "bond"] # lists of words for easy game
+moderate_words = ["apple", "table", "chair", "house", "smile", "cloud", "green", "beach", 
+    "piano", "phone",
+    "water", "music", "brush", "light", "happy", "tiger", "zebra", "dance", "earth", "lemon",
+    "vivid", "beard", "grape", "sword", "ocean", "baker", "fancy", "quick", "juice", "sugar",
+    "pizza", "puppy", "peace", "dream", "money", "peace", "grace", "train", "sunny", "pilot",
+    "wrist", "laugh", "daisy", "smoke", "beard", "jelly", "candy", "happy", "lucky", "tulip"] # lists of words for moderate game
+difficult_words = ["freedom", "champion", "hospital", "elephant", "universe", "broccoli", "calendar",
+    "computer", "keyboard", "mountain","whisper", "language", "triangle", "eleven", "fantasy",
+    "language", "synergy", "marathon", "boulevard", "magnolia","beautiful", "sunshine", "friendly",
+    "happiness", "knowledge", "inspired", "delicious", "ambitious", "vacation", "calendar",
+    "wonderful", "victorious", "curiosity", "courageous", "celebrate", "basketball", "challenge",
+    "celebration", "experience", "watermelon","chocolate", "continuous", "community", "adventure",
+    "creativity", "leadership", "innovation", "communication", "imagination"] # lists of words for difficult game
 attempts = 6 # numbers for allowed tempts 
   
 def display_hangman(stdscr, incorrect_guesses):
