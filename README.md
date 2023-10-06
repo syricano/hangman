@@ -1,6 +1,6 @@
-#### Hangman
 
-# Introduction
+# Hangman
+## Introduction
 
 [Hangman](https://github.com/syricano/hangman) is a website for the classical hangman game that can be played online. It can be played [here](https://hangmann.onrender.com/)
 
