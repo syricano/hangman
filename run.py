@@ -215,8 +215,8 @@ def play_hangman_game(stdscr):
                 stdscr.addstr(14, 0, "Sorry ! You Lost '_'\n"
                               "\nYou ran out of attempts.")
                 # Revealing the word
-                stdscr.addstr(17, 1, "The word was : " + word_to_guess)
-                stdscr.addstr(19, 1, "Press 'Y or Enter' to Play again"
+                stdscr.addstr(17, 0, "The word was : " + word_to_guess)
+                stdscr.addstr(19, 0, "Press 'Y or Enter' to Play again"
                               "or 'Q' to quit."
                               )
                 stdscr.refresh()
