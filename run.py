@@ -212,10 +212,11 @@ def play_hangman_game(stdscr):
             if incorrect_guesses >= attempts:
                 display_hangman(stdscr, incorrect_guesses)
                 # Ending the game
-                stdscr.addstr(14, 0, "You ran out of attempts.")
+                stdscr.addstr(14, 0, "Sorry ! You Lost '_'\n"
+                              "\nYou ran out of attempts.")
                 # Revealing the word
-                stdscr.addstr(15, 0, "The word was : " + word_to_guess)
-                stdscr.addstr(17, 0, "Press 'Y or Enter' to Play again"
+                stdscr.addstr(17, 1, "The word was : " + word_to_guess)
+                stdscr.addstr(19, 1, "Press 'Y or Enter' to Play again"
                               "or 'Q' to quit."
                               )
                 stdscr.refresh()
