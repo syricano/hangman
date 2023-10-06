@@ -119,11 +119,14 @@ then the game prompt user to press Y or enter to play again or Q to quite.
 - display word      correct word display             confirmed
 - Play again        play again                       confirmed
 
-- bugs: conflict between function name selection_difficulty and varible selcted_difficulty
+# Bugs
 
+## Solved
+- conflict between function name selection_difficulty and variable selected_difficulty
 resolved by rename the function
+
 - game when running an error occur due to missing () for lowercase of guess word.
-it was resolved by adding ()
+it was resolved by adding () in target function
 
 - a bug found that nothing print when the word is guessed
 it was resolved by assigning variable to guessed word and comparing it with word to guess (secret word)
@@ -131,3 +134,27 @@ it was resolved by assigning variable to guessed word and comparing it with word
 - a bug found in rules, it did not quite when selecting q, 
 
 resolved adding the forgotten parentheses 
+
+## Unsolved bugs 
+None
+
+# Deployment
+* This Site was deployed by completing the following steps:
+
+1. Creating new account and login to [Render](https://dashboard.render.com/).
+2. on Dashboard click on New + then select Web Service
+3. Select the GitHub option and connect the application to the repository you created.
+4. Search for the repository you created and click "Connect."
+5. Create unique name for the application , mine selected hangmann.
+6. Select the region where you want to deploy the application.Mine selected Frankfurt EU
+7. Select branch to deploy.
+8. Select environment.
+9. Render build command: pip3 install -r requirements.txt && npm install.
+10. Render start command: node index.js.
+11. Select Free plan.
+12. Click on "Advanced" settings.
+13. Add the following environment variables:
+Key: PORT Value: 8000
+Key: PYTHON_VERSION Value: 3.10.7
+14. Click "Create Web Service."
+15. Wait for the completion of the deployment.
