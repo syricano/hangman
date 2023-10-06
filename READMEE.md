@@ -2,7 +2,7 @@
 
 # Introduction
 
-[Hangman](https://github.com/syricano/hangman) is a website for the classical hangman game that can be played online. It can be played [here]##to be added after deployed 
+[Hangman](https://github.com/syricano/hangman) is a website for the classical hangman game that can be played online. It can be played [here](https://hangmann.onrender.com/)
 
 ## Technologies used
 - [python](https://www.python.org/) the programming language used to create this game.
