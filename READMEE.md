@@ -27,6 +27,10 @@
 
 ---
 
+# Design
+Hangman is designed with few keyboard characters to shape head, arms, body, legs each part symbolize 1 attempts of total 6 max attempts for user input.
+
+
 
 - bugs: conflict between function name selection_difficulty and varible selcted_difficulty
 
