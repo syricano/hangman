@@ -1,4 +1,4 @@
-#_Hangman_
+#### Hangman
 
 # Introduction
 
