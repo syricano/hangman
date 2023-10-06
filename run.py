@@ -103,7 +103,7 @@ def difficulty(stdscr):
     while True:
         for i, option in enumerate(difficulty_options):
             if i == difficulty_index:
-                stdscr.addstr(i + 4, 2, "->" + option)
+                stdscr.addstr(i + 4, 2, "-> " + option)
             else:
                 stdscr.addstr(i + 4, 2, "  " + option)
         # Method to control keyboard arrow keys up & down
@@ -249,7 +249,7 @@ def main(stdscr):
         while True:
             for i, option in enumerate(options):
                 if i == option_index:
-                    stdscr.addstr(i + 4, 2, "->" + option)
+                    stdscr.addstr(i + 4, 2, "-> " + option)
                 else:
                     stdscr.addstr(i + 4, 2, "  " + option)
             # Method to control keyboard arrow keys up & down
