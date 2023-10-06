@@ -49,7 +49,15 @@ in case of higher difficulty
 #### Design
 Hangman is designed with few keyboard characters to shape head, arms, body, legs each part symbolize 1 attempts of total 6 max attempts for user input.
 
+##### Flow Chart
+A flow chart was made through lucid to plan the steps and structure of the game (https://lucid.app/lucidchart/fa9b2743-5bf5-4d84-9b61-a6478f78a67f/edit?viewport_loc=-634%2C-65%2C2466%2C1223%2C0_0&invitationId=inv_c279b1c0-6d04-4edb-acc5-1f045c1c60c4) ![Lucid](documentation/flowchart.jpg)
 
+# Features
+
+## Welcome Page
+
+![Full Home Page](documentation/main%20page%20game.jpg.JPG)
+- The main page has 3 navigation menu option for user to interact and choose to play or view rules or quit.
 
 - bugs: conflict between function name selection_difficulty and varible selcted_difficulty
 
