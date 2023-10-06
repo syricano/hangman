@@ -12,39 +12,52 @@
 
 ### User stories:
 
-1- As a player, I want to be able to select a difficulty level (easy, moderate, difficult) at the beginning of the game so that I can choose the level of challenge I prefer.
-2- As a player, I want to see a visual representation of the hangman as I make incorrect guesses, so I can track my progress and avoid losing.
-3- As a player, I want to be able to see the incorrect letters I've guessed so far, so I can avoid repeating them.
-4- As a player, I want to see the current status of the word I'm trying to guess, with blanks for letters I haven't guessed yet, so I can better guess the word.
-5- As a player, I want to know if my guess is correct and see the updated word if I guessed correctly, so I can continue making progress.
-6- As a player, I want to know if my guess is incorrect and see the hangman drawing progress if I guessed wrong, so I can keep track of my remaining attempts.
-7- As a player, I want to be informed  if I win the game by correctly guessing the word, so I can celebrate my victory.
-8- As a player, I want to be notified if I lose the game by running out of attempts, so I can see the correct word and decide to play again.
-9- As a player, I want the option to play the game again after either winning or losing, so I can continue playing without restarting the program.
-10- As a player, I want to access the game rules to understand how to play, so I can learn or refresh my knowledge of the game.
-11- As a player, I want to have the option to quit the game if I decide to exit, so I can gracefully exit the program.
-12- As a developer, I want to deploy the game to Heroku with the necessary build packs so that players can access it online.
+1. As a player, I want to be able to select a difficulty level (easy, moderate, difficult) at the beginning of the game,
+ so that I can choose the level of challenge I prefer.
+
+2. As a player, I want to see a visual representation of the hangman as I make incorrect guesses,
+ so I can track my progress and avoid losing.
+3. As a player, I want to be able to see the incorrect letters I've guessed so far,
+ so I can avoid repeating them.
+4. As a player, I want to see the current status of the word I'm trying to guess, with blanks for letters I haven't guessed yet,
+ so I can better guess the word.
+5. As a player, I want to know if my guess is correct and see the updated word if I guessed correctly,
+ so I can continue making progress.
+6. As a player, I want to know if my guess is incorrect and see the hangman drawing progress if I guessed wrong,
+ so I can keep track of my remaining attempts.
+7. As a player, I want to be informed  if I win the game by correctly guessing the word,
+ so I can celebrate my victory.
+8. As a player, I want to be notified if I lose the game by running out of attempts,
+ so I can see the correct word and decide to play again.
+9. As a player, I want the option to play the game again after either winning or losing,
+ so I can continue playing without restarting the program.
+10. As a player, I want to access the game rules to understand how to play,
+ so I can learn or refresh my knowledge of the game.
+11. As a player, I want to have the option to quit the game if I decide to exit,
+ so I can gracefully exit the program.
+12. As a developer, I want to deploy the game to Heroku with the necessary build packs,
+ so that players can access it online.
 
 ---
 
 #### Planning:
-1- Adding 3 lists of words , each lists can be used for difficulty choice of  user ( easy, moderate, difficult) lists of words.
-2- select one word of the list randomly. and declare attempts
-3- add input difficulty selection
-4- ask player to make an input letters
-5- validate the input to be a a letter , convert input to a str
-6- creating a function to check the letter if included in the secret word or if user input the whole letters of word
-update the word index values if the input is correct 
-if the input is incorrect to reduce attempts
-7- create a function to represent the current status of guessing word or incorrect attempt 
-( mainly drawing hangman symbols/character)
-8- creating a function to check if user guessed the word to declare he winned
-and ending the game, also if he lose
-9 - added a function to allow user select difficulty which will be used to pick up the long words
-in case of higher difficulty
-10- wrapped game function into main function to include main page menu
-11 - writing game rules.
-12 - deploy the game to render.
+1. Adding 3 lists of words , each lists can be used for difficulty choice of  user ( easy, moderate, difficult) lists of words.
+2. select one word of the list randomly. and declare attempts
+3. add input difficulty selection
+4. ask player to make an input letters
+5. validate the input to be a a letter , convert input to a str
+6. creating a function to check the letter if included in the secret word or
+ if user input the whole letters of word update the word index values if the input is correct 
+ if the input is incorrect to reduce attempts
+7. create a function to represent the current status of guessing word or incorrect attempt 
+ (mainly drawing hangman symbols/character).
+8. creating a function to check if user guessed the word to declare he winned
+ and ending the game, also if he lose.
+9. added a function to allow user select difficulty which will be used to pick up
+ the long words in case of higher difficulty
+10. wrapped game function into main function to include main page menu
+11. writing game rules.
+12. deploy the game to render.
 
 #### Design
 Hangman is designed with few keyboard characters to shape head, arms, body, legs each part symbolize 1 attempts of total 6 max attempts for user input.
