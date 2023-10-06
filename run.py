@@ -132,7 +132,8 @@ def display_rules(stdscr):
     ]
     for i, rule in enumerate(rules):
         stdscr.addstr(i + 2, 0, rule)
-    stdscr.addstr(10, 0, "Press 'Q' to go back to the main menu.")
+    stdscr.addstr(10, 0, "Press 'Q' to go back to the main menu,"
+                  " or Enter to start playing")
     stdscr.refresh()
     while True:
         key = stdscr.getch()
