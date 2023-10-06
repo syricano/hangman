@@ -86,6 +86,38 @@ then the game prompt user to press Y or enter to play again or Q to quite.
 ![Play Game](documentation/play-game.jpg)
 ![Congratulation](documentation/winmessage.jpg)
 
+# Testing
+
+- I tested the game through IC Python Linter until I cleared all errors or warnings 
+![IC Python Linter](http://pep8ci.herokuapp.com/#) 
+[](documentation/plinter1.jpg)
+[](documentation/plinter2.jpg)
+[](documentation/plinter3.jpg)
+[](documentation/plinter4.jpg)
+[](documentation/plinter5.jpg)
+[](documentation/plinter6.jpg)
+[](documentation/plinter7.jpg)
+[](documentation/plinter8.jpg)
+[](documentation/plinter9.jpg)
+
+- I also tested the page through Chrome lighthouse and i got positive result of 97% accessibility 70% performance
+![Lighthouse](documentation/lighthouse-testing.jpg)
+-
+# Manual Testing 
+# Testing Description    Expected Action           Actual Output
+- Main Page Load       Game loads with menu          confirmed
+- Rules            Rules is accessed by <up,down>    confirmed 
+- Quite             Quite option works               confirmed
+- Welcome message       Welcome message prints       confirmed
+- select DIF        prompt user to select DIF        confirmed  
+- incorrect L      list incorrect L in list          confirmed
+- Draw hangman      Draw hangman by incorrect L      confirmed
+- Attempts          Draw attempts -1                 confirmed
+- Correct           List correct L in display        confirmed
+- win               Declare winning                  confirmed
+- Game over         Ran out                          confirmed
+- display word      correct word display             confirmed
+- Play again        play again                       confirmed
 
 - bugs: conflict between function name selection_difficulty and varible selcted_difficulty
 
