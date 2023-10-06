@@ -56,8 +56,36 @@ A flow chart was made through lucid to plan the steps and structure of the game 
 
 ## Welcome Page
 
-![Full Home Page](documentation/main%20page%20game.jpg.JPG)
+![Full Home Page](documentation/main%20page%20game.jpg)
 - The main page has 3 navigation menu option for user to interact and choose to play or view rules or quit.
+
+### Rules
+![Rules](documentation/rules%20page.jpg)
+- list of rules for player to read and can make a selection to press enter or Y to play or Q to quit
+
+#### Play Game
+- at the top a welcome message to player
+then an option for play to select difficulty using arrow key boards , with pointer to current selection.
+each selection is linked to a list of words.
+easy mode with words for only 3 to 4 letters.
+moderate with words of 5 or 6 letters.
+difficult with words of 7 or more letters.
+
+# Game Cycle or loop
+The user is prompt to guess a letter or word with S number of letters displayed on the terminal.
+- for every correct guessed letter, the game functionality append his selected letter in the right secret word index. finally if guessed word completed , the game congratulate the player and prompt to play again by pressing Y or enter, or Q to quite.
+- for every incorrect letter, the game append his input in another display letters list, and start drawing one part of hangman 6 body one for each incorrect letter until user reaches the max attempts of 6 then the game declare the right word and he ran out of attempts.
+then the game prompt user to press Y or enter to play again or Q to quite.
+![Incorrect Attempt 1](documentation/incorrect1attempt.jpg)
+![Incorrect Attempt 2](documentation/incorrect2attempt.jpg)
+![Incorrect Attempt 3](documentation/incorrect3attempt.jpg)
+![Incorrect Attempt 4](documentation/incorrect4attempt.jpg)
+![Incorrect Attempt 5](documentation/incorrect5attempt.jpg)
+![Incorrect Attempt 6](documentation/incorrect6attempt.jpg)
+![Play Game](documentation/main-game.jpg)
+![Play Game](documentation/play-game.jpg)
+![Congratulation](documentation/winmessage.jpg)
+
 
 - bugs: conflict between function name selection_difficulty and varible selcted_difficulty
 
